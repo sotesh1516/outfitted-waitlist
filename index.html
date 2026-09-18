@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Try on clothes with your avatar, share complete fits with friends, and get a quick personalized fit check before you buy.">
+  <title>Outfitted — See the fit before you buy</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header class="site-nav">
+      <a class="wordmark" href="#top" aria-label="Outfitted home">OUTFITTED<span class="wordmark-dot">.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#experience">The experience</a>
+        <a href="#fit-check">Fit check</a>
+      </nav>
+      <a class="button nav-cta" href="#waitlist">Get early access</a>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <div class="eyebrow"><span aria-hidden="true">✦</span> Your virtual fitting room, everywhere</div>
+        <h1>See the outfit on <em>you</em> before the box arrives.</h1>
+        <p class="hero-lede">
+          Try on pieces from select stores with your private avatar, build a complete fit,
+          and send it to friends who can wear it too. We’re starting with supported
+          retailers and working toward a fitting room that travels wherever you shop.
+        </p>
+        <form class="waitlist-form" data-waitlist-form>
+          <label class="sr-only" for="hero-email">Email address</label>
+          <input id="hero-email" name="email" type="email" autocomplete="email" placeholder="you@school.edu" required>
+          <button class="button" type="submit">Join the waitlist <span aria-hidden="true">→</span></button>
+          <p class="form-message" role="status" aria-live="polite"></p>
+        </form>
+        <p class="form-note">Early access for college shoppers. No spam, just launch updates.</p>
+      </div>
+
+      <div class="hero-visual" aria-label="Stylized before and after virtual outfit preview">
+        <div class="look-panel look-before">
+          <div class="person person-before" aria-hidden="true"><span class="head"></span><span class="torso"></span><span class="legs"></span></div>
+        </div>
+        <div class="look-panel look-after">
+          <div class="person person-after" aria-hidden="true"><span class="head"></span><span class="torso"></span><span class="jacket"></span><span class="legs"></span></div>
+        </div>
+        <div class="visual-divider" aria-hidden="true"></div>
+        <div class="visual-label before-label">STARTING PHOTO</div>
+        <div class="visual-label after-label">✦ OUTFITTED</div>
+        <div class="item-stack"><span>3 pieces</span><strong>One complete fit</strong></div>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Why Outfitted matters">
+      <div><strong>20–40%</strong><span>estimated online apparel return rate</span></div>
+      <div><strong>One avatar</strong><span>for try-ons at supported stores</span></div>
+      <div><strong>One tap</strong><span>for friends to try your fit</span></div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="section-heading">
+        <p class="kicker">FROM SCREENSHOT TO OUTFIT</p>
+        <h2>Trying it on is only the beginning.</h2>
+        <p>Outfitted turns isolated product photos into something personal, social, and easier to trust.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card feature-primary">
+          <div class="feature-number">01</div>
+          <div class="avatar-copy">
+            <div class="feature-icon" aria-hidden="true">⌗</div>
+            <h3>A detailed 3D version of you.</h3>
+            <p>
+              Create a reusable digital body model with the shape and proportions needed
+              for more meaningful fit checks and realistic clothing simulation—not just a
+              look-alike profile picture.
+            </p>
+            <div class="avatar-inputs" aria-label="Ways to build your avatar">
+              <span>⌗ A few photos</span>
+              <span>▶ Optional guided video</span>
+              <span>↔ Basic measurements</span>
+            </div>
+          </div>
+          <div class="avatar-render" aria-label="Stylized 3D body geometry preview">
+            <div class="scan-grid" aria-hidden="true"></div>
+            <div class="wire-avatar" aria-hidden="true"><span class="wire-head"></span><span class="wire-body"></span><span class="wire-leg left"></span><span class="wire-leg right"></span><span class="wire-arm left"></span><span class="wire-arm right"></span></div>
+            <div class="scan-line" aria-hidden="true"></div>
+            <div class="avatar-render-label"><span>BODY GEOMETRY</span><strong>Ready for cloth simulation</strong></div>
+          </div>
+        </article>
+
+        <article class="feature-card feature-share">
+          <div class="feature-number">02</div>
+          <div class="feature-icon" aria-hidden="true">💬</div>
+          <h3>Send the fit, not a screenshot.</h3>
+          <p>
+            Every shared look keeps the exact pieces and shopping links. Your friend can
+            tap <strong>Try this on</strong> and see the whole outfit on their own avatar.
+          </p>
+          <div class="share-preview" aria-hidden="true">
+            <div class="mini-avatar">A</div>
+            <div><span>Maya shared a fit</span><strong>Blue hour</strong></div>
+            <button type="button">Try this on <span>›</span></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="fit-section" id="fit-check">
+      <div class="fit-copy">
+        <div class="eyebrow dark"><span aria-hidden="true">↔</span> Quick Fit Check</div>
+        <h2>A fast answer before a full try-on.</h2>
+        <p>
+          Sometimes you don’t need a new image—you need to know whether the medium will
+          sit the way you expect. We compare your measurements and fit preferences with
+          the item’s size, cut, dimensions, and material behavior.
+        </p>
+        <ul>
+          <li><span class="check">✓</span> Faster than generating a full look</li>
+          <li><span class="check">✓</span> Specific to you and the exact item</li>
+          <li><span class="check">✓</span> Designed to improve as vendor data gets richer</li>
+        </ul>
+      </div>
+
+      <div class="fit-panel">
+        <div class="fit-panel-top">
+          <div class="product-thumb" aria-hidden="true">👕</div>
+          <div><span>Oversized poplin shirt</span><strong>Size M</strong></div>
+          <div class="match-score">87<span>% match</span></div>
+        </div>
+        <div class="recommendation">
+          <span class="pulse-dot"></span>
+          <div><strong>Likely relaxed through the chest</strong><p>Sleeves may run 1–2 cm long based on your preference.</p></div>
+        </div>
+        <div class="signal-grid">
+          <div><span>Size</span><strong>M</strong></div>
+          <div><span>Cut</span><strong>Relaxed</strong></div>
+          <div><span>Stretch</span><strong>Low</strong></div>
+          <div><span>Drape</span><strong>Structured</strong></div>
+        </div>
+        <div class="confidence-bar"><span></span></div>
+        <small>Fit guidance is an estimate, not a guarantee.</small>
+      </div>
+    </section>
+
+    <section class="clothing-data">
+      <div class="data-copy">
+        <div class="eyebrow"><span aria-hidden="true">⌁</span> A richer language for clothing</div>
+        <h2>Because “medium, blue” doesn’t tell you how it wears.</h2>
+      </div>
+      <div class="data-cloud" aria-label="Clothing properties Outfitted can represent">
+        <span class="data-pill pill-0">linen blend</span><span class="data-pill pill-1">midweight</span><span class="data-pill pill-2">low stretch</span><span class="data-pill pill-3">structured</span><span class="data-pill pill-0">breathable</span><span class="data-pill pill-1">soft texture</span><span class="data-pill pill-2">relaxed cut</span><span class="data-pill pill-3">fluid drape</span>
+      </div>
+      <p class="data-note">
+        We’re building a consistent clothing profile across products and vendors—so fit
+        advice can account for how a garment behaves, not just the number on its tag.
+      </p>
+    </section>
+
+    <section class="steps">
+      <div class="section-heading small">
+        <p class="kicker">HOW IT WORKS</p>
+        <h2>Your next fit in three moves.</h2>
+      </div>
+      <div class="step-grid">
+        <article><span>1</span><h3>Build your avatar</h3><p>Add a few photos, an optional guided video, and basic measurements once.</p></article>
+        <article><span>2</span><h3>Add a supported item</h3><p>Paste a product link or upload a clean screenshot from a supported store.</p></article>
+        <article><span>3</span><h3>Try, check, share</h3><p>See the look, check the likely fit, and ask your people.</p></article>
+      </div>
+    </section>
+
+    <section class="final-cta" id="waitlist">
+      <p class="kicker">COMING FIRST TO CAMPUS</p>
+      <h2>Your group chat is about to get a fitting room.</h2>
+      <p>Join the first group helping us make online shopping feel less like a gamble.</p>
+      <form class="waitlist-form compact" data-waitlist-form>
+        <label class="sr-only" for="footer-email">Email address</label>
+        <input id="footer-email" name="email" type="email" autocomplete="email" placeholder="you@school.edu" required>
+        <button class="button" type="submit">Join the waitlist <span aria-hidden="true">→</span></button>
+        <p class="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <footer>
+      <a class="wordmark" href="#top">OUTFITTED<span class="wordmark-dot">.</span></a>
+      <p>Try the fit. Ask your people. Buy with confidence.</p>
+      <span>© 2026 Outfitted</span>
+    </footer>
+  </main>
+  <script src="script.js" defer></script>
+</body>
+</html>
