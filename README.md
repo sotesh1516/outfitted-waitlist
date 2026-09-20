@@ -6,28 +6,33 @@ A lightweight static landing page for Outfitted.
 
 - index.html — page structure and copy
 - styles.css — all styling and responsive behavior
-- script.js — minimal waitlist form submission
-- functions/api/waitlist.js — optional Cloudflare Pages Function for saving emails to D1
-- schema.sql — the waitlist table schema
+- script.js — local waitlist form submission
+- google-apps-script/Code.gs — Google Sheets webhook code
 
 There is no React, Next.js, TypeScript, Tailwind, Vite, pnpm/npm dependency install, or build step.
 
 ## Run locally
 
-For the visual page only, any static server works. For example:
+Open `index.html` directly in your browser, or use any static server:
 
     python3 -m http.server 8000
 
 Then open http://localhost:8000.
 
-The /api/waitlist endpoint is a Cloudflare Pages Function, so the signup form needs a Pages deployment (or another backend wired to the same URL) to actually store emails.
+## Google Sheets setup
 
-## Cloudflare Pages + D1
+1. Create a Google Sheet with a header row such as `Created At` and `Email`.
+2. Open **Extensions > Apps Script**, replace the editor contents with `google-apps-script/Code.gs`, and save it.
+3. In Apps Script, open **Project Settings > Script properties** and add:
+    - `SPREADSHEET_ID` — the text between `/d/` and `/edit` in your Sheet URL.
+    - `SHEET_NAME` — the exact tab name at the bottom of the Sheet, usually `Sheet1`.
+4. Choose **Deploy > Manage deployments**, click the pencil icon, select **New version**, set **Execute as** to yourself, set access to **Anyone**, and deploy.
+5. Copy the web app URL and paste it into `GOOGLE_SHEETS_WEBHOOK_URL` at the top of `script.js`.
+6. Open `index.html` and submit a test email.
 
-1. Create or reuse a D1 database.
-2. Apply schema.sql to that database.
-3. Add a Pages D1 binding named DB.
-4. Deploy the repository as a Pages project with no build command and / as the output directory.
+If the script is bound to the Sheet, `SPREADSHEET_ID` is optional, but setting it makes the web app connection reliable. If you change the Apps Script code, create a new deployment version before testing again.
+
+The Apps Script checks for an existing email before adding a row. The URL is used by the local page to submit signups directly to the Sheet.
 
 ## Notes
 

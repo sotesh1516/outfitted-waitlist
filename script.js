@@ -1,3 +1,4 @@
+const GOOGLE_SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzFdMA4tMbOtY-tkhy-qUm6S5bdG6m_K0Ia5n1zevi466WV85rnVuyBC9-PgNb4xbrnaQ/exec';
 const forms = document.querySelectorAll('[data-waitlist-form]');
 
 forms.forEach((form) => {
@@ -15,14 +16,8 @@ forms.forEach((form) => {
     button.textContent = 'Joining…';
 
     try {
-      const response = await fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(data.message || 'Could not join right now.');
+      const data = await submitToGoogleSheets(email);
+      if (!data.ok) throw new Error(data.message || 'Could not join right now.');
 
       message.textContent = data.message || "You're on the list.";
       message.classList.add('success');
@@ -35,3 +30,37 @@ forms.forEach((form) => {
     }
   });
 });
+
+function submitToGoogleSheets(email) {
+  return new Promise((resolve, reject) => {
+    if (!GOOGLE_SHEETS_WEBHOOK_URL.startsWith('https://script.google.com/')) {
+      reject(new Error('Google Sheets is not configured yet.'));
+      return;
+    }
+
+    const callbackName = `waitlistCallback_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    const script = document.createElement('script');
+    const timeout = window.setTimeout(() => {
+      cleanup();
+      reject(new Error('Could not reach Google Sheets. Please try again.'));
+    }, 10000);
+
+    window[callbackName] = (data) => {
+      cleanup();
+      resolve(data);
+    };
+
+    script.onerror = () => {
+      cleanup();
+      reject(new Error('Could not reach Google Sheets. Please try again.'));
+    };
+    script.src = `${GOOGLE_SHEETS_WEBHOOK_URL}?email=${encodeURIComponent(email)}&source=outfitted-waitlist&callback=${callbackName}`;
+    document.head.appendChild(script);
+
+    function cleanup() {
+      window.clearTimeout(timeout);
+      delete window[callbackName];
+      script.remove();
+    }
+  });
+}

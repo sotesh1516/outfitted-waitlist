@@ -83,8 +83,11 @@ h1 em { color: var(--primary); font-family: Georgia,"Times New Roman",serif; fon
 .avatar-copy > p { font-size: 1.03rem; line-height: 1.62; opacity: .78; }
 .avatar-inputs { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.8rem; }
 .avatar-inputs span { align-items: center; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.27); border-radius: 999px; display: flex; font-size: .72rem; font-weight: 750; gap: .42rem; padding: .58rem .72rem; }
-.avatar-render { background: #071a56; border: 1px solid rgba(255,255,255,.24); border-radius: 1.15rem; min-height: 100%; overflow: hidden; position: relative; }
-.avatar-image { display: block; height: 100%; object-fit: cover; object-position: center; width: 100%; }
+.avatar-render { background: #071a56; border: 1px solid rgba(255,255,255,.24); border-radius: 1.15rem; display: grid; gap: .8rem; grid-template-columns: 1.08fr .92fr; min-height: 100%; overflow: hidden; padding: .45rem; position: relative; }
+.avatar-view { background: #0b2a82; border-radius: .82rem; display: flex; flex-direction: column; margin: 0; min-width: 0; overflow: hidden; position: relative; }
+.avatar-image { display: block; flex: 1 1 auto; height: auto; min-height: 0; object-fit: cover; object-position: center; width: 100%; }
+.avatar-view-side .avatar-image { object-position: 50% center; }
+.avatar-view::after { background: linear-gradient(180deg,rgba(4,14,52,.04) 60%,rgba(4,14,52,.7)); content: ""; inset: 0; pointer-events: none; position: absolute; }
 .feature-share { background: #e7e4df; }
 .share-preview { align-items: center; background: white; border: 1px solid #d4d4cf; border-radius: 1.2rem; bottom: 2rem; box-shadow: 0 18px 50px rgba(17,17,19,.08); display: grid; gap: .8rem; grid-template-columns: auto 1fr; left: 2rem; padding: 1rem; position: absolute; right: 2rem; }
 .mini-avatar { align-items: center; background: var(--accent); border-radius: 50%; display: flex; font-weight: 850; height: 46px; justify-content: center; width: 46px; }
@@ -135,6 +138,18 @@ footer p { color: #9e9ea2; font-size: .86rem; margin: 0; } footer > span { color
   .proof-strip { grid-template-columns: 1fr; }.proof-strip div { justify-content: flex-start; }.proof-strip div + div { border-left: 0; border-top: 1px solid rgba(255,255,255,.28); }
   .feature-grid,.fit-section,.clothing-data { grid-template-columns: 1fr; }.feature-card { min-height: 600px; }.data-note { grid-column: auto; }.fit-panel { margin: 1rem 0; }
 }
+@media (max-width: 1100px) and (min-width: 681px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-copy { justify-self: center; margin-inline: auto; max-width: 800px; padding: 7rem 7vw 5rem; text-align: center; width: 100%; }
+  .hero-copy .eyebrow { justify-content: center; }
+  .hero-lede { margin-inline: auto; }
+  .waitlist-form { margin-inline: auto; }
+  .form-note { margin-left: 0; }
+  .hero-visual { justify-self: center; min-height: 780px; width: min(100%, 760px); }
+  .proof-strip { grid-template-columns: 1fr; }
+  .proof-strip div { align-items: start; display: grid; gap: .8rem; grid-template-columns: 7.5rem minmax(0, 320px); justify-content: center; }
+  .proof-strip div + div { border-left: 0; border-top: 1px solid rgba(255,255,255,.28); }
+}
 @media (max-width: 1200px) and (min-width: 981px) { .feature-primary { grid-template-columns: 1fr; }.avatar-render { min-height: 290px; } }
 @media (max-width: 680px) {
   .site-nav { grid-template-columns: 1fr auto; height: 68px; padding-inline: 1rem; }.site-nav nav { display: none; }.nav-cta { font-size: .8rem; min-height: 38px; }
@@ -145,7 +160,7 @@ footer p { color: #9e9ea2; font-size: .86rem; margin: 0; } footer > span { color
   } */
   .waitlist-form { grid-template-columns: 1fr; }.waitlist-form button { width: 100%; }.hero-visual { min-height: 520px; }
   .proof-strip { padding-inline: 1.2rem; }.proof-strip div { align-items: start; display: grid; gap: .8rem; grid-template-columns: 7.5rem minmax(0,1fr); }.proof-strip span { line-height: 1.35; }.experience,.fit-section,.steps { padding: 6rem 1.2rem; }
-  .feature-card { min-height: 560px; padding: 1.4rem; }.feature-primary { grid-template-columns: 1fr; min-height: 890px; }.avatar-render { min-height: 390px; }
+  .feature-card { min-height: 560px; padding: 1.4rem; }.feature-primary { grid-template-columns: 1fr; min-height: 890px; }.avatar-render { grid-template-columns: 1fr 1fr; min-height: 390px; }
   .share-preview { bottom: 1.4rem; left: 1.4rem; right: 1.4rem; }.fit-panel { box-shadow: 9px 12px 0 var(--primary); padding: 1rem; }.match-score { font-size: 1.6rem; }
   .clothing-data { padding: 6rem 1.2rem 3rem; }.step-grid { grid-template-columns: 1fr; }.step-grid article { min-height: auto; }.step-grid article + article { border-left: 0; border-top: 1px solid #ccccca; }.step-grid article > span { margin-bottom: 2rem; }
   .final-cta { padding: 6rem 1.2rem; } footer { gap: 1.5rem; grid-template-columns: 1fr; text-align: center; } footer .wordmark,footer > span { justify-self: center; }
